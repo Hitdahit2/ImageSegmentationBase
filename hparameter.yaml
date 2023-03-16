@@ -1,0 +1,33 @@
+train:
+  batch_size: 200000
+  gpus: 1 #0:cpu, 1:gpu
+  device: 0
+  lr: 0.0002
+  weight_decay: 0.00
+  opt_eps: 1e-9
+  beta1: 0.9
+  beta2: 0.999
+  batch_size: 32
+
+# this code covers semantic segmentation only.
+# make sure that background region should be 0.
+# if your mask contatins multiple categories, make sure that each categories has unique number. ie. background=0, dog=1, cat=2, ... and so on.
+data:
+  image_tr:  
+  label_tr:
+  image_vl:
+  label_vl:
+  image_ts:
+  label_ts:
+  is_multi: #0 -> binary segmentation #1 -> 2 categories, # 2 -> 3 categories, and so on.
+
+augmentation: # TODO: yaml albumentation 지원 여부.
+transfer_learning: path
+    
+arch:
+  
+                
+log:
+  name: 'ImageSegmentationBase'
+  checkpoint_dir: 'ckpt'
+  tensorboard_dir: 'logs'
