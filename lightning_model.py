@@ -24,15 +24,16 @@ class Model(pl.LightningModule):
         '''
         if hparams.transfer_learning:
             try:
-                self.load_dict(hparams.transfer_learning)
+                dicts = torch.load(hparams.transfer_learning)
+                self.model.load_state_dict(dicts)
             except:
-                    
+                print("Load error you may loaded another state dict of model. try another state dict")
         
-    """
+    
     def load_dict(self, target_dict):
         TODO: load checkpoint as specified in hparameter.yaml file.
         
-    """
+    
     def forward(self, x):
         '''
         INPUT:
